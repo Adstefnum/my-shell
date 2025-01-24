@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <unordered_map>
+#include "commands.h"
 
 int main() {
   // Flush after every std::cout / std:cerr
@@ -11,6 +13,13 @@ int main() {
 
     std::string input;
     std::getline(std::cin, input);
-    std::cout << input << ": command not found" << std::endl;
+
+    auto it = Commands::commands.find(input);
+    if (it != Commands::commands.end()) {
+      it->second(input);
+    } else {
+      std::cout << input << ": command not found" << std::endl;
+    }
+
   }
 }
