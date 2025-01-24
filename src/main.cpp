@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include "commands.h"
+#include <sstream>
 
 int main() {
   // Flush after every std::cout / std:cerr
@@ -10,13 +11,19 @@ int main() {
 
   while (true) {
     std::cout << "$ ";
-
+    std::vector<std::string> args;
     std::string input;
     std::getline(std::cin, input);
+    std::stringstream iss(input);
+    std::string token;
 
-    auto it = Commands::commands.find(input);
+    while (std::getline(iss, token, ' ')) {
+      args.push_back(token);
+    }
+ 
+    auto it = Commands::commands.find(args[0]);
     if (it != Commands::commands.end()) {
-      it->second(input);
+      it->second(args);
     } else {
       std::cout << input << ": command not found" << std::endl;
     }

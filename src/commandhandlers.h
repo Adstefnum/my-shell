@@ -4,5 +4,6 @@
 class CommandHandler {
 public:
     static CommandHandlerType exitCommand;
+    static CommandHandlerType echoCommand;
 };
 

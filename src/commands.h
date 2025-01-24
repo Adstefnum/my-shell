@@ -5,6 +5,7 @@
 
 namespace Commands {
     std::unordered_map<std::string, CommandHandlerType> commands = {
-        {"exit 0", CommandHandler::exitCommand}
+        {"exit", CommandHandler::exitCommand},
+        {"echo", CommandHandler::echoCommand}
     };
 }
