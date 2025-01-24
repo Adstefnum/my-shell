@@ -1,9 +1,10 @@
 #include <unordered_map>
 #include <string>
+#include "commandhandlers.h"
 #include "types.h"
 
-class Commands {
-public:
-    static std::unordered_map<std::string, CommandHandlerType> commands;
-};
-
+namespace Commands {
+    std::unordered_map<std::string, CommandHandlerType> commands = {
+        {"exit 0", CommandHandler::exitCommand}
+    };
+}
