@@ -8,6 +8,6 @@ namespace Commands {
     CommandType commands = {
         {"exit", CommandHandler::exitCommand},
         {"echo", CommandHandler::echoCommand},
-        {"type", CommandHandler::typeCommand}
+        {"type", CommandHandler::typeCommand},
     };
 } 

@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include "commands.h"
 #include <sstream>
+#include "helpers.h"
 
 int main() {
   // Flush after every std::cout / std:cerr
@@ -20,14 +21,20 @@ int main() {
     while (std::getline(iss, token, ' ')) {
       args.push_back(token);
     }
- 
+
     auto it = Commands::commands.find(args[0]);
     if (it != Commands::commands.end()) {
       it->second(args, [](const std::string& command) {
         return Commands::commands.find(command) != Commands::commands.end();
       });
     } else {
-      std::cout << args[0] << ": command not found" << std::endl;
+      std::string exe_path = Helpers::exec(("which " + args[0]).c_str());
+      if (exe_path != "") {
+        std::string command = exe_path + " " + args[1];
+        Helpers::exec(command.c_str());
+      } else {
+        std::cout << args[0] << ": command not found" << std::endl;
+      }
     }
 
   }
