@@ -9,5 +9,6 @@ namespace Commands {
         {"exit", CommandHandler::exitCommand},
         {"echo", CommandHandler::echoCommand},
         {"type", CommandHandler::typeCommand},
+        {"pwd", CommandHandler::pwdCommand},
     };
 } 

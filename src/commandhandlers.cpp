@@ -32,5 +32,9 @@ CommandHandlerType CommandHandler::typeCommand = [](const std::vector<std::strin
     }
 };
 
+CommandHandlerType CommandHandler::pwdCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
+    std::cout << Helpers::exec("pwd");
+};
+
 
 

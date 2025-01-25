@@ -7,5 +7,6 @@ public:
     static CommandHandlerType exitCommand;
     static CommandHandlerType echoCommand;
     static CommandHandlerType typeCommand;
+    static CommandHandlerType pwdCommand;
 };
 
