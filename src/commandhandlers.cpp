@@ -39,7 +39,9 @@ CommandHandlerType CommandHandler::pwdCommand = [](const std::vector<std::string
 };
 
 CommandHandlerType CommandHandler::cdCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
-   chdir(args[1].c_str());
+   if (!chdir(args[1].c_str()) == 0) {
+    std::cout << "cd: " << args[1] << ": No such file or directory" << std::endl;
+   }
 };
 
 
