@@ -3,6 +3,8 @@
 #include "commandhandlers.h"
 #include "types.h"
 #include "helpers.h"
+#include <unistd.h>
+
 CommandHandlerType CommandHandler::exitCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
     exit(0);
 };
@@ -37,8 +39,7 @@ CommandHandlerType CommandHandler::pwdCommand = [](const std::vector<std::string
 };
 
 CommandHandlerType CommandHandler::cdCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
-    std::string command = "cd " + args[1];
-    system(command.c_str());
+   chdir(args[1].c_str());
 };
 
 
