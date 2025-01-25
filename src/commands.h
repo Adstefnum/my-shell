@@ -1,11 +1,13 @@
+#pragma once
 #include <unordered_map>
 #include <string>
 #include "commandhandlers.h"
 #include "types.h"
 
 namespace Commands {
-    std::unordered_map<std::string, CommandHandlerType> commands = {
+    CommandType commands = {
         {"exit", CommandHandler::exitCommand},
-        {"echo", CommandHandler::echoCommand}
+        {"echo", CommandHandler::echoCommand},
+        {"type", CommandHandler::typeCommand}
     };
-}
+} 

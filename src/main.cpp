@@ -23,9 +23,11 @@ int main() {
  
     auto it = Commands::commands.find(args[0]);
     if (it != Commands::commands.end()) {
-      it->second(args);
+      it->second(args, [](const std::string& command) {
+        return Commands::commands.find(command) != Commands::commands.end();
+      });
     } else {
-      std::cout << input << ": command not found" << std::endl;
+      std::cout << args[0] << ": command not found" << std::endl;
     }
 
   }
