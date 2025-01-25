@@ -15,7 +15,8 @@ CommandHandlerType CommandHandler::echoCommand = [](const std::vector<std::strin
 };
 
 CommandHandlerType CommandHandler::typeCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
-    std::string exe_path = Helpers::exec(("which " + args[1]).c_str());
+    std::string command = "which " + args[1];
+    std::string exe_path = Helpers::exec(command);
     
     if (args.size() < 2) {
         std::cout << "type: missing argument" << std::endl;
