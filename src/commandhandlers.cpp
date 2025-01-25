@@ -26,7 +26,7 @@ CommandHandlerType CommandHandler::typeCommand = [](const std::vector<std::strin
         std::cout << args[1] << " is a shell builtin" << std::endl;
     }
     else if (exe_path != "") {
-        std::cout << args[1] << " is " << exe_path << std::endl;
+        std::cout << args[1] << " is " << exe_path;
     } else {
         std::cout << args[1] << ": not found" << std::endl;
     }
