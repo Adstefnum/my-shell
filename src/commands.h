@@ -10,5 +10,6 @@ namespace Commands {
         {"echo", CommandHandler::echoCommand},
         {"type", CommandHandler::typeCommand},
         {"pwd", CommandHandler::pwdCommand},
+        {"cd", CommandHandler::cdCommand},
     };
 } 

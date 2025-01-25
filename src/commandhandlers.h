@@ -8,5 +8,6 @@ public:
     static CommandHandlerType echoCommand;
     static CommandHandlerType typeCommand;
     static CommandHandlerType pwdCommand;
+    static CommandHandlerType cdCommand;
 };
 
