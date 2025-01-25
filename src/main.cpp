@@ -12,16 +12,32 @@ int main() {
 
   while (true) {
     std::cout << "$ ";
-    std::vector<std::string> args;
     std::string input;
     std::getline(std::cin, input);
-    std::stringstream iss(input);
+    std::vector<std::string> args;
     std::string token;
+    bool in_quotes = false;
+    std::string current_token;
 
-    while (std::getline(iss, token, ' ')) {
-      args.push_back(token);
+    for (size_t i = 0; i < input.length(); i++) {
+        char c = input[i];
+        if (c == '\'' || c == '"') {
+            in_quotes = !in_quotes;
+            continue;
+        }
+        if (c == ' ' && !in_quotes) {
+            if (!current_token.empty()) {
+                args.push_back(current_token);
+                current_token.clear();
+            }
+        } else {
+            current_token += c;
+        }
     }
-
+    if (!current_token.empty()) {
+        args.push_back(current_token);
+    }
+    
     auto it = Commands::commands.find(args[0]);
     if (it != Commands::commands.end()) {
       it->second(args, [](const std::string& command) {
