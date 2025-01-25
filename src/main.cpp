@@ -30,7 +30,7 @@ int main() {
     } else {
       std::string exe_path = Helpers::exec(("which " + args[0]).c_str());
       if (exe_path != "") {
-        std::string command = args[0] + " " + args[1];
+        std::string command = "sh " + args[0] + " " + args[1];
         Helpers::exec(command.c_str());
       } else {
         std::cout << args[0] << ": command not found" << std::endl;
