@@ -4,6 +4,7 @@
 #include "types.h"
 #include "helpers.h"
 #include <unistd.h>
+#include "direct.h"
 
 CommandHandlerType CommandHandler::exitCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
     exit(0);
@@ -11,7 +12,14 @@ CommandHandlerType CommandHandler::exitCommand = [](const std::vector<std::strin
 
 CommandHandlerType CommandHandler::echoCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
     for (int i = 1; i < args.size(); i++) {
-        std::cout << args[i] << " ";
+        std::string arg = args[i];
+        if(arg.front() == '"' || arg.front() == '\'') {
+            arg = arg.substr(1, arg.length() - 1);
+        }
+        if(arg.back() == '"' || arg.back() == '\'') {
+            arg = arg.substr(0, arg.length() - 1);
+        }
+        std::cout << arg << " ";
     }
     std::cout << std::endl;
 };

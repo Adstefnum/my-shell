@@ -22,6 +22,7 @@ int main() {
     for (size_t i = 0; i < input.length(); i++) {
         char c = input[i];
         if (c == '\'' || c == '"') {
+            current_token += c;
             in_quotes = !in_quotes;
             continue;
         }
@@ -46,7 +47,10 @@ int main() {
     } else {
       std::string exe_path = Helpers::exec(("which " + args[0]).c_str());
       if (exe_path != "") {
-        std::string command = args[0] + " " + args[1];
+        std::string command = args[0];
+        for (size_t i = 1; i < args.size(); i++) {
+            command += " " + args[i];
+        }
         system(command.c_str());
       } else {
         std::cout << args[0] << ": command not found" << std::endl;
