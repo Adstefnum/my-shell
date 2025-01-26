@@ -4,7 +4,6 @@
 #include "types.h"
 #include "helpers.h"
 #include <unistd.h>
-#include "direct.h"
 
 CommandHandlerType CommandHandler::exitCommand = [](const std::vector<std::string>& args, CommandExistsFunc exists) {
     exit(0);
